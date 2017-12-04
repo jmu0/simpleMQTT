@@ -1,2 +1,2 @@
 # simpleMQTT
-very simple mqtt (based on  paho.mqtt.golang)
+Simplifies paho.mqtt.golang

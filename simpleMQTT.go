@@ -2,6 +2,8 @@
 package simpleMQTT
 
 import (
+	"time"
+
 	MQTT "github.com/eclipse/paho.mqtt.golang"
 )
 
@@ -41,7 +43,7 @@ func (m *Mqtt) messageHandler(client MQTT.Client, msg MQTT.Message) {
 //Connect opens connection
 func (m *Mqtt) connect() error {
 	opts := MQTT.NewClientOptions().AddBroker(m.URL)
-	opts.SetClientID("simpleMQTT")
+	opts.SetClientID("simpleMQTT" + time.Now().Format(time.UnixDate))
 	opts.SetDefaultPublishHandler(m.messageHandler)
 	m.client = MQTT.NewClient(opts)
 	m.token = m.client.Connect()
